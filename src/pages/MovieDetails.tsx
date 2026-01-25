@@ -25,7 +25,7 @@ export default function MovieDetails() {
       <p>Synopsis: {movie.overview}</p>
       <p>Rating: {movie.vote_average}</p>
       <p>Release: {movie.release_date}</p>
-      <h3 style={{display: 'inline-block'}}>Type : </h3> {movie.genres.map((genres) => <span style={{margin: '2px 4px'}}>{genres.name}</span>)}
+      <h3 style={{display: 'inline-block'}}>Type : </h3> {movie.genres.map((genres) => <span style={{margin: '2px 4px'}}>{genres.name},</span>)}
 
       <h3>Cast</h3>
       <div style={{ display: "flex", gap: 10, margin: '16px 4px', overflowX: "auto" }}>

@@ -18,23 +18,11 @@ export default function Login() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <button className="login-btn" onClick={() => login(email)}>
-          Login
-        </button>
-
+        <button className="login-btn" onClick={() => login(email)}> Login</button>
         <p className="login-social-text">Social Login</p>
-
-        <button className="social-btn google" onClick={() => login("google@user.com")}>
-          Google
-        </button>
-
-        <button className="social-btn facebook" onClick={() => login("facebook@user.com")}>
-          Facebook
-        </button>
-
-        <button className="social-btn apple" onClick={() => login("apple@user.com")}>
-          Apple
-        </button>
+        <button className="social-btn google" onClick={() => login("sunil@user.com")}>  Google</button>
+        <button className="social-btn facebook" onClick={() => login("sunil@user.com")}>  Facebook</button>
+        <button className="social-btn apple" onClick={() => login("sunil@user.com")}> Apple </button>
       </div>
     </div>
   );

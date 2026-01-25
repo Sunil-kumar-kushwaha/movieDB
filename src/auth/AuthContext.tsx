@@ -5,8 +5,15 @@ const AuthContext = createContext<any>(null);
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user") || "null"));
-
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  function isValidEmail(email) {
+    return emailRegex.test(email);
+  }
   const login = (email: string) => {
+    if (!isValidEmail(email)){
+      alert("Enter valid email");
+      return;
+    } 
     localStorage.setItem("user", JSON.stringify({ email }));
     setUser({ email });
     window.location.href = "/"
