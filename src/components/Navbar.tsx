@@ -1,9 +1,31 @@
 
 
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../auth/AuthContext";
+import { useNavigate } from "react-router-dom";
+
+
 
 export default function Navbar() {
+  const [navState, setNavState] = useState("home");
+  const navigate = useNavigate();
+
+  const navigateHome = () => {
+    setNavState("home");
+    navigate("/");
+  }
+  const navigateFavorites = () => {
+    setNavState("fav");
+    navigate("/favorites");
+  }
+  const navigateSearch = () => {
+    setNavState("search");
+    navigate("/search");
+  }
+
+  const { user, logout } = useAuth();
+  // console.log(user)
   return (
     <nav className="movie-navbar">
       {/* Left Logo */}
@@ -12,13 +34,15 @@ export default function Navbar() {
       </div>
 
       {/* Center Tabs */}
-      <div className="movie-tabs">
-        <button className="movie-tab active"><Link to="/">Home</Link> </button>
-        <button className="movie-tab"><Link to="/favorites"> Favorites</Link></button>
-        <div className="movie-search">
-          <Link to="/search"> 🔍 </Link>
-        </div>
-      </div>
+      {
+        user && (
+          <div className="movie-tabs">
+            <button className={`movie-tab ${navState == 'home' ? "active" : ""}`} onClick={navigateHome}>Home </button>
+            <button className={`movie-tab ${navState == 'fav' ? "active" : ""}`} onClick={navigateFavorites}>Favorites </button>
+            <div className={`movie-search ${navState == 'search' ? "active" : ""}`} onClick={navigateSearch}> 🔍 </div>
+          </div>
+        )
+      }
 
       {/* Right Profile */}
       <div className="movie-profile">
@@ -29,7 +53,7 @@ export default function Navbar() {
           alt="User"
         />
         <div className="movie-user">
-          Sunil Kushwaha <span>Premium</span>
+          {user?.email ? (<div style={{ display: 'inline-block' }}> <h2>{user.email.split("@")[0].toUpperCase()}</h2> <button onClick={logout}>Logout</button> </div>) : (<button>Login/Register</button>)}
         </div>
       </div>
     </nav>

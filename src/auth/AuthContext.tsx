@@ -9,10 +9,15 @@ export const AuthProvider = ({ children }: any) => {
   const login = (email: string) => {
     localStorage.setItem("user", JSON.stringify({ email }));
     setUser({ email });
+    window.location.href = "/"
+  };
+  const logout = (email: string) => {
+    localStorage.removeItem("user");
+    setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

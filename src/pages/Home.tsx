@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { getCategory } from "../api/tmdb";
 import MovieCard from "../components/MovieCard";
+// import Navbar from "../components/Navbar"
+
 
 const categories = ["popular", "now_playing", "upcoming", "top_rated"];
 
@@ -15,6 +17,7 @@ export default function Home() {
 
   return (
     <div>
+      {/* <Navbar /> */}
       <div style={{ padding: 20 }}>
         {categories.map(c => (
           <button key={c} onClick={() => setCat(c)} style={{ marginRight: 8, borderRadius: 12}}>
