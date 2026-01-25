@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useAuth } from "../auth/AuthContext";
 
@@ -7,15 +6,36 @@ export default function Login() {
   const [email, setEmail] = useState("");
 
   return (
-    <div style={{ padding: 50 }}>
-      <h2>Login</h2>
-      <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <button onClick={() => login(email)}>Login</button>
+    <div className="login-page">
+      <div className="login-card">
+        <h2 className="login-title">Login</h2>
 
-      <p>Social Login</p>
-      <button onClick={() => login("google@user.com")}>Google</button>
-      <button onClick={() => login("facebook@user.com")}>Facebook</button>
-      <button onClick={() => login("apple@user.com")}>Apple</button>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          className="login-input"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <button className="login-btn" onClick={() => login(email)}>
+          Login
+        </button>
+
+        <p className="login-social-text">Social Login</p>
+
+        <button className="social-btn google" onClick={() => login("google@user.com")}>
+          Google
+        </button>
+
+        <button className="social-btn facebook" onClick={() => login("facebook@user.com")}>
+          Facebook
+        </button>
+
+        <button className="social-btn apple" onClick={() => login("apple@user.com")}>
+          Apple
+        </button>
+      </div>
     </div>
   );
 }
